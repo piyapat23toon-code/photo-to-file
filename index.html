@@ -30,47 +30,35 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:'Noto Sans Thai','Inter',system-ui,sans-serif;
-  color:var(--text); min-height:100vh; line-height:1.6;
+  font-family:'Noto Sans Thai','Inter',system-ui,sans-serif;color:var(--text);min-height:100vh;line-height:1.6;
   background:
     radial-gradient(1200px 600px at 10% -10%, var(--bg2), transparent 60%),
     radial-gradient(1000px 600px at 90% 0%, var(--bg3), transparent 55%),
     var(--bg1);
-  background-attachment:fixed;
-  transition:background .4s, color .3s;
+  background-attachment:fixed;transition:background .4s,color .3s;
 }
 .wrap{max-width:1150px;margin:0 auto;padding:22px 18px 40px}
 
-/* ---------- HEADER ---------- */
 header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px}
 .logo{display:flex;align-items:center;gap:13px}
-.logo .ic{
-  width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:29px;
-  background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)
-}
+.logo .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:29px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
 .logo h1{font-size:1.5rem;font-weight:700;letter-spacing:-.4px;line-height:1.2}
 .logo h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .logo p{font-size:.82rem;color:var(--muted)}
 .hbtns{display:flex;gap:8px}
-.icon-btn{
-  width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--card);
-  color:var(--text);font-size:18px;cursor:pointer;backdrop-filter:blur(10px);transition:.2s
-}
+.icon-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--card);
+  color:var(--text);font-size:18px;cursor:pointer;backdrop-filter:blur(10px);transition:.2s}
 .icon-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 
-/* ---------- CARD ---------- */
-.card{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  box-shadow:var(--shadow);backdrop-filter:blur(14px);padding:20px;margin-bottom:18px
-}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);backdrop-filter:blur(14px);padding:20px;margin-bottom:18px}
 .card h2{font-size:1.02rem;font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .card h2 small{font-weight:400;color:var(--muted);font-size:.8rem}
+.hint{font-size:.78rem;color:var(--muted);margin-top:10px}
 
-/* ---------- DROPZONE ---------- */
-#drop{
-  border:2.5px dashed var(--border);border-radius:16px;padding:38px 20px;text-align:center;
-  cursor:pointer;transition:.25s;background:linear-gradient(180deg,transparent,rgba(99,102,241,.05))
-}
+#drop{border:2.5px dashed var(--border);border-radius:16px;padding:38px 20px;text-align:center;
+  cursor:pointer;transition:.25s;background:linear-gradient(180deg,transparent,rgba(99,102,241,.05))}
 #drop:hover,#drop.over{border-color:var(--brand);background:rgba(99,102,241,.10);transform:scale(1.005)}
 #drop .big{font-size:52px;line-height:1;margin-bottom:8px}
 #drop h3{font-size:1.1rem;font-weight:600;margin-bottom:4px}
@@ -79,24 +67,30 @@ header{display:flex;align-items:center;justify-content:space-between;gap:14px;fl
 .chip{font-size:.72rem;padding:3px 10px;border-radius:999px;background:rgba(99,102,241,.14);color:var(--brand);font-weight:600}
 [data-theme="dark"] .chip{background:rgba(99,102,241,.22);color:#a5b4fc}
 
-/* ---------- SETTINGS ---------- */
+/* ---- segmented format picker ---- */
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.seg button{padding:16px 10px;border-radius:14px;border:2px solid var(--border);background:var(--card-solid);
+  color:var(--text);font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;transition:.2s;line-height:1.35}
+.seg button b{display:block;font-size:1.5rem;margin-bottom:3px}
+.seg button small{display:block;font-weight:400;font-size:.72rem;color:var(--muted)}
+.seg button:hover{transform:translateY(-2px);border-color:var(--brand)}
+.seg button.on{border-color:transparent;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 8px 22px rgba(99,102,241,.35)}
+.seg button.on small{color:rgba(255,255,255,.85)}
+
 .grid-opt{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px}
 .field label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:5px}
-select,input[type=text],input[type=number]{
-  width:100%;padding:10px 12px;border-radius:11px;border:1px solid var(--border);
-  background:var(--card-solid);color:var(--text);font-family:inherit;font-size:.9rem;outline:none;transition:.2s
-}
+.field.wide{grid-column:1/-1}
+select,input[type=text],input[type=number]{width:100%;padding:10px 12px;border-radius:11px;border:1px solid var(--border);
+  background:var(--card-solid);color:var(--text);font-family:inherit;font-size:.9rem;outline:none;transition:.2s}
 select:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,102,241,.18)}
 input[type=color]{width:100%;height:41px;border:1px solid var(--border);border-radius:11px;background:var(--card-solid);cursor:pointer;padding:3px}
 input[type=range]{width:100%;accent-color:var(--brand);cursor:pointer}
 .switch{display:flex;align-items:center;gap:9px;font-size:.88rem;cursor:pointer;user-select:none;padding-top:22px}
 .switch input{width:18px;height:18px;accent-color:var(--brand);cursor:pointer}
+.off{opacity:.45;pointer-events:none}
 
-/* ---------- BUTTONS ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border:none;
-  border-radius:13px;font-family:inherit;font-size:.93rem;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border:none;
+  border-radius:13px;font-family:inherit;font-size:.93rem;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 8px 22px rgba(99,102,241,.38)}
 .btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 28px rgba(99,102,241,.5)}
@@ -106,64 +100,51 @@ input[type=range]{width:100%;accent-color:var(--brand);cursor:pointer}
 .btn-danger:hover{background:rgba(239,68,68,.22)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
-/* ---------- THUMBS ---------- */
 .bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .stat{font-size:.82rem;color:var(--muted)}
 .stat b{color:var(--text)}
 #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px}
-.thumb{
-  position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);
-  background:var(--card-solid);box-shadow:0 3px 10px rgba(15,23,42,.07);transition:.2s;cursor:grab
-}
+.thumb{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--card-solid);box-shadow:0 3px 10px rgba(15,23,42,.07);transition:.2s;cursor:grab}
 .thumb:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .thumb.dragging{opacity:.4}
 .thumb.over{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,102,241,.3)}
-.thumb .imgbox{
-  height:130px;display:grid;place-items:center;overflow:hidden;
-  background:repeating-conic-gradient(#e2e8f0 0 25%,#f8fafc 0 50%) 50%/16px 16px
-}
+.thumb .imgbox{height:130px;display:grid;place-items:center;overflow:hidden;
+  background:repeating-conic-gradient(#e2e8f0 0 25%,#f8fafc 0 50%) 50%/16px 16px}
 [data-theme="dark"] .thumb .imgbox{background:repeating-conic-gradient(#1e293b 0 25%,#0f172a 0 50%) 50%/16px 16px}
 .thumb img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .25s}
 .thumb .meta{padding:7px 9px;font-size:.7rem;color:var(--muted)}
 .thumb .meta .nm{display:block;color:var(--text);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.75rem}
-.num{
-  position:absolute;top:7px;left:7px;min-width:24px;height:24px;padding:0 6px;border-radius:8px;
+.num{position:absolute;top:7px;left:7px;min-width:24px;height:24px;padding:0 6px;border-radius:8px;
   background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:.74rem;font-weight:700;
-  display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)
-}
+  display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .tools{position:absolute;top:7px;right:7px;display:flex;gap:4px;opacity:0;transition:.2s}
 .thumb:hover .tools{opacity:1}
-.tbtn{
-  width:26px;height:26px;border-radius:8px;border:none;background:rgba(15,23,42,.72);color:#fff;
-  font-size:12px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(4px)
-}
+.tbtn{width:26px;height:26px;border-radius:8px;border:none;background:rgba(15,23,42,.72);color:#fff;
+  font-size:12px;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(4px)}
 .tbtn:hover{background:var(--brand)}
 .tbtn.del:hover{background:var(--danger)}
 .move{position:absolute;bottom:34px;left:0;right:0;display:flex;justify-content:space-between;padding:0 6px;opacity:0;transition:.2s}
 .thumb:hover .move{opacity:1}
 
-/* ---------- PROGRESS / TOAST ---------- */
 #overlay{position:fixed;inset:0;background:rgba(2,6,23,.62);backdrop-filter:blur(6px);display:none;place-items:center;z-index:99}
 #overlay.show{display:grid}
-.pbox{background:var(--card-solid);padding:28px 32px;border-radius:20px;width:min(380px,90vw);text-align:center;box-shadow:var(--shadow)}
+.pbox{background:var(--card-solid);padding:28px 32px;border-radius:20px;width:min(390px,90vw);text-align:center;box-shadow:var(--shadow)}
 .pbox .sp{font-size:40px;display:block;margin-bottom:10px;animation:spin 1.6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ptrack{height:9px;border-radius:99px;background:var(--border);overflow:hidden;margin:14px 0 8px}
 .pfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .2s}
 #toasts{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:9px;z-index:100}
-.toast{
-  padding:12px 17px;border-radius:13px;background:var(--card-solid);border-left:4px solid var(--brand);
-  box-shadow:var(--shadow);font-size:.87rem;animation:in .3s;max-width:330px
-}
+.toast{padding:12px 17px;border-radius:13px;background:var(--card-solid);border-left:4px solid var(--brand);
+  box-shadow:var(--shadow);font-size:.87rem;animation:in .3s;max-width:330px}
 .toast.ok{border-color:var(--ok)} .toast.warn{border-color:var(--warn)} .toast.err{border-color:var(--danger)}
 @keyframes in{from{transform:translateX(120%);opacity:0}}
 
-/* ---------- FOOTER ---------- */
 footer{text-align:center;padding:26px 10px 6px;border-top:1px solid var(--border);margin-top:26px}
 footer .brand{font-weight:700;font-size:1.05rem;letter-spacing:1.6px;background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
 footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
 .empty{text-align:center;padding:26px;color:var(--muted);font-size:.9rem}
-@media(max-width:560px){.logo h1{font-size:1.2rem}.wrap{padding:16px 12px 30px}}
+@media(max-width:560px){.logo h1{font-size:1.2rem}.wrap{padding:16px 12px 30px}.seg{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -174,7 +155,7 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
       <div class="ic">🗂️</div>
       <div>
         <h1>photo To file — <span>TooN</span></h1>
-        <p>แปลงรูปภาพเป็นไฟล์ PDF· Piyapat B.</p>
+        <p>แปลงรูปภาพเป็น PDF / Word / PowerPoint · ทำงานในเครื่องคุณ 100%</p>
       </div>
     </div>
     <div class="hbtns">
@@ -194,9 +175,20 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
     <input type="file" id="picker" accept="image/*" multiple hidden>
   </div>
 
-  <!-- ตั้งค่า -->
+  <!-- รูปแบบไฟล์ -->
   <div class="card">
-    <h2>⚙️ ตั้งค่าไฟล์ PDF <small>ค่าเริ่มต้น = A4 · 1 ภาพ ต่อ 1 หน้า</small></h2>
+    <h2>📦 รูปแบบไฟล์ผลลัพธ์ <small>ค่าเริ่มต้นคือ PDF</small></h2>
+    <div class="seg" id="fmtSeg">
+      <button data-f="pdf"  class="on"><b>📄</b>PDF<small>.pdf · ค่าเริ่มต้น</small></button>
+      <button data-f="docx"><b>📝</b>Word<small>.docx · แก้ไขต่อได้</small></button>
+      <button data-f="pptx"><b>📊</b>PowerPoint<small>.pptx · 1 ภาพ 1 สไลด์</small></button>
+    </div>
+    <p class="hint" id="fmtNote">ทุกรูปแบบใช้ค่ากระดาษ ลายน้ำ และหัว/ท้ายกระดาษชุดเดียวกัน</p>
+  </div>
+
+  <!-- ตั้งค่ากระดาษ -->
+  <div class="card">
+    <h2>⚙️ ตั้งค่าหน้ากระดาษ <small>ค่าเริ่มต้น = A4 · 1 ภาพ ต่อ 1 หน้า</small></h2>
     <div class="grid-opt">
       <div class="field">
         <label>ขนาดกระดาษ</label>
@@ -242,7 +234,7 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
         </select>
       </div>
       <div class="field">
-        <label>รูปแบบภาพใน PDF</label>
+        <label>รูปแบบภาพภายในไฟล์</label>
         <select id="optFmt">
           <option value="auto" selected>อัตโนมัติ (แนะนำ)</option>
           <option value="jpeg">JPEG — ไฟล์เล็ก</option>
@@ -258,10 +250,76 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
         <input type="color" id="optBg" value="#ffffff">
       </div>
       <div class="field">
-        <label>ชื่อไฟล์ PDF</label>
+        <label>ชื่อไฟล์</label>
         <input type="text" id="optName" placeholder="photo-to-file" value="photo-to-file">
       </div>
-      <label class="switch"><input type="checkbox" id="optPageNo"> ใส่เลขหน้า</label>
+    </div>
+  </div>
+
+  <!-- บีบอัดขนาด -->
+  <div class="card">
+    <h2>🗜️ จำกัด / บีบอัดขนาดไฟล์ <small>ระบบจะลดคุณภาพและย่อภาพอัตโนมัติจนได้ขนาดที่ต้องการ</small></h2>
+    <div class="grid-opt">
+      <div class="field">
+        <label>ขนาดไฟล์สูงสุด</label>
+        <select id="optMax">
+          <option value="0" selected>ไม่จำกัด (คุณภาพเต็ม)</option>
+          <option value="1">ไม่เกิน 1 MB</option>
+          <option value="2">ไม่เกิน 2 MB</option>
+          <option value="5">ไม่เกิน 5 MB</option>
+          <option value="10">ไม่เกิน 10 MB</option>
+          <option value="20">ไม่เกิน 20 MB</option>
+          <option value="-1">กำหนดเอง…</option>
+        </select>
+      </div>
+      <div class="field" id="maxCustomBox" style="display:none">
+        <label>กำหนดเอง (MB)</label>
+        <input type="number" id="optMaxMB" min="0.1" max="500" step="0.1" value="3">
+      </div>
+      <div class="field">
+        <label>ความพยายามบีบอัดสูงสุด</label>
+        <select id="optTries">
+          <option value="4">เร็ว (4 รอบ)</option>
+          <option value="6" selected>สมดุล (6 รอบ)</option>
+          <option value="8">ละเอียด (8 รอบ)</option>
+        </select>
+      </div>
+    </div>
+    <p class="hint">⚠️ เมื่อกำหนดขนาดสูงสุด ระบบจะบังคับใช้ JPEG (ภาพโปร่งใสจะถูกเติมด้วยสีพื้นหลัง) เพื่อให้บีบอัดได้จริง</p>
+  </div>
+
+  <!-- ลายน้ำ + หัว/ท้ายกระดาษ -->
+  <div class="card">
+    <h2>💧 ลายน้ำ และ หัว/ท้ายกระดาษ <small>ใช้ตัวแปร {n} {total} {name} {date} ได้</small></h2>
+    <div class="grid-opt">
+      <div class="field wide">
+        <label>ข้อความลายน้ำ</label>
+        <input type="text" id="wmText" placeholder="เช่น ตัวอย่าง · สำเนา · CONFIDENTIAL">
+      </div>
+      <div class="field">
+        <label>รูปแบบลายน้ำ</label>
+        <select id="wmMode">
+          <option value="none" selected>ปิดลายน้ำ</option>
+          <option value="center">กลางหน้า (เฉียง)</option>
+          <option value="tile">ทั่วทั้งหน้า (ไทล์)</option>
+        </select>
+      </div>
+      <div class="field"><label>สีลายน้ำ</label><input type="color" id="wmColor" value="#9ca3af"></div>
+      <div class="field"><label>ขนาด (pt) <b id="wmSizeLbl">60</b></label><input type="range" id="wmSize" min="12" max="160" step="2" value="60"></div>
+      <div class="field"><label>ความทึบ <b id="wmOpLbl">25%</b></label><input type="range" id="wmOpacity" min="5" max="90" step="5" value="25"></div>
+      <div class="field">
+        <label>องศาเอียง</label>
+        <select id="wmRot">
+          <option value="-45" selected>-45°</option><option value="-30">-30°</option>
+          <option value="0">0° (แนวนอน)</option><option value="45">45°</option><option value="90">90°</option>
+        </select>
+      </div>
+      <div class="field"><label>ข้อความหัวกระดาษ (Header)</label><input type="text" id="hdText" placeholder="เช่น รายงานประจำเดือน {date}"></div>
+      <div class="field"><label>ข้อความท้ายกระดาษ (Footer)</label><input type="text" id="ftText" placeholder="เช่น จัดทำโดย PIYAPAT B."></div>
+      <div class="field"><label>รูปแบบเลขหน้า</label><input type="text" id="pnFmt" value="{n} / {total}"></div>
+      <div class="field"><label>สีข้อความหัว/ท้าย</label><input type="color" id="hfColor" value="#6b7280"></div>
+      <div class="field"><label>ขนาดข้อความ (pt) <b id="hfSizeLbl">10</b></label><input type="range" id="hfSize" min="6" max="20" step="1" value="10"></div>
+      <label class="switch"><input type="checkbox" id="optPageNo"> แสดงเลขหน้า</label>
     </div>
   </div>
 
@@ -269,7 +327,7 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
   <div class="card">
     <div class="bar">
       <h2 style="margin:0">📚 รายการภาพ <small>ลากสลับลำดับได้</small></h2>
-      <div class="stat">ทั้งหมด <b id="cnt">0</b> ภาพ · <b id="size">0 MB</b> · PDF <b id="pages">0</b> หน้า</div>
+      <div class="stat">ทั้งหมด <b id="cnt">0</b> ภาพ · <b id="size">0 MB</b> · <b id="pages">0</b> หน้า/สไลด์</div>
     </div>
     <div class="actions" style="margin-bottom:14px">
       <button class="btn btn-ghost" id="addMore">➕ เพิ่มรูป</button>
@@ -299,7 +357,7 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
 
 <div id="overlay"><div class="pbox">
   <span class="sp">🗂️</span>
-  <h3 id="pTitle">กำลังสร้างไฟล์ PDF…</h3>
+  <h3 id="pTitle">กำลังสร้างไฟล์…</h3>
   <div class="ptrack"><div class="pfill" id="pFill"></div></div>
   <div class="stat" id="pText">เตรียมข้อมูล…</div>
 </div></div>
@@ -310,20 +368,40 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
   'use strict';
   const $ = id => document.getElementById(id);
   const PAPER = { a4:[210,297], a5:[148,210], a3:[297,420], letter:[215.9,279.4] };
+  const MM2EMU = 36000, MM2TW = 1440/25.4, MM2IN = 1/25.4, PT2MM = 25.4/72;
+  const LIBS = {
+    jszip:'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
+    pptx :'https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js'
+  };
+  const EXT = { pdf:'pdf', docx:'docx', pptx:'pptx' };
+  const LABEL = { pdf:'PDF', docx:'Word', pptx:'PowerPoint' };
 
-  let items = [];           // { id, file, url, name, size, w, h, rot }
-  let uid = 0, dragFrom = null, busy = false;
+  let items = [], uid = 0, dragFrom = null, busy = false, fmt = 'pdf';
+  const ovCache = new Map();
 
-  /* ---------- Utils ---------- */
+  /* ================= Utils ================= */
   const fmtSize = b => b < 1024 ? b+' B' : b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(2)+' MB';
+  const sleep = m => new Promise(r=>setTimeout(r,m));
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const hex6 = c => (c||'#000000').replace('#','').toUpperCase().slice(0,6);
   function toast(msg, type='ok'){
     const t = document.createElement('div');
     t.className = 'toast '+type; t.textContent = msg;
     $('toasts').appendChild(t);
-    setTimeout(()=>{ t.style.transition='.3s'; t.style.opacity=0; t.style.transform='translateX(120%)'; setTimeout(()=>t.remove(),320); }, 3200);
+    setTimeout(()=>{ t.style.transition='.3s'; t.style.opacity=0; t.style.transform='translateX(120%)'; setTimeout(()=>t.remove(),320); }, 3600);
   }
+  const loaded = {};
+  function loadScript(src){
+    if (loaded[src]) return loaded[src];
+    return loaded[src] = new Promise((res,rej)=>{
+      const s = document.createElement('script');
+      s.src = src; s.onload = res; s.onerror = ()=>rej(new Error('โหลดไลบรารีไม่สำเร็จ'));
+      document.head.appendChild(s);
+    });
+  }
+  function setProg(p, txt){ $('pFill').style.width = Math.max(0,Math.min(100,p))+'%'; if(txt!=null) $('pText').textContent = txt; }
 
-  /* ---------- Theme ---------- */
+  /* ================= Theme & options ================= */
   const setTheme = t => {
     document.documentElement.dataset.theme = t;
     $('themeBtn').textContent = t === 'dark' ? '☀️' : '🌙';
@@ -332,22 +410,40 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
   setTheme(localStorage.getItem('toon-theme') || 'light');
   $('themeBtn').onclick = () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
 
-  /* ---------- จำค่าตั้งค่า ---------- */
-  const OPTS = ['optSize','optOrient','optFit','optMargin','optDpi','optFmt','optQ','optBg','optName','optPageNo'];
+  const OPTS = ['optSize','optOrient','optFit','optMargin','optDpi','optFmt','optQ','optBg','optName','optPageNo',
+                'optMax','optMaxMB','optTries','wmText','wmMode','wmColor','wmSize','wmOpacity','wmRot',
+                'hdText','ftText','pnFmt','hfColor','hfSize'];
   OPTS.forEach(k=>{
     const el = $(k), sv = localStorage.getItem('toon-'+k);
     if (sv !== null) el.type === 'checkbox' ? el.checked = sv === '1' : el.value = sv;
     el.addEventListener('change', ()=> localStorage.setItem('toon-'+k, el.type==='checkbox' ? (el.checked?'1':'0') : el.value));
   });
-  $('optQ').addEventListener('input', e => $('qLbl').textContent = e.target.value + '%');
-  $('qLbl').textContent = $('optQ').value + '%';
+  const bindLbl = (id,lbl,suffix='') => { const f=()=>$(lbl).textContent = $(id).value + suffix; $(id).addEventListener('input',f); f(); };
+  bindLbl('optQ','qLbl','%'); bindLbl('wmSize','wmSizeLbl'); bindLbl('wmOpacity','wmOpLbl','%'); bindLbl('hfSize','hfSizeLbl');
 
-  /* ---------- รับไฟล์ ---------- */
+  const syncMax = () => $('maxCustomBox').style.display = $('optMax').value === '-1' ? '' : 'none';
+  $('optMax').addEventListener('change', syncMax); syncMax();
+
+  /* format picker */
+  fmt = localStorage.getItem('toon-fmt') || 'pdf';
+  function setFmt(f){
+    fmt = f; localStorage.setItem('toon-fmt', f);
+    [...$('fmtSeg').children].forEach(b => b.classList.toggle('on', b.dataset.f === f));
+    $('make').textContent = (f==='pdf'?'📄':f==='docx'?'📝':'📊') + ' สร้าง ' + LABEL[f] + ' & ดาวน์โหลด';
+    $('preview').disabled = f !== 'pdf' || !items.length || busy;
+    $('preview').title = f === 'pdf' ? '' : 'ดูตัวอย่างได้เฉพาะ PDF';
+    $('fmtNote').textContent = f === 'pdf'
+      ? 'PDF รองรับแนวกระดาษสลับรายหน้าได้ตามภาพแต่ละใบ'
+      : 'Word/PowerPoint ใช้ขนาดและแนวกระดาษเดียวกันทุกหน้า (ถ้าเลือก "อัตโนมัติ" จะยึดตามแนวของภาพส่วนใหญ่)';
+  }
+  [...$('fmtSeg').children].forEach(b => b.onclick = () => setFmt(b.dataset.f));
+  setFmt(fmt);
+
+  /* ================= รับไฟล์ ================= */
   const drop = $('drop'), picker = $('picker');
   drop.onclick = () => picker.click();
   $('addMore').onclick = () => picker.click();
   picker.onchange = e => { addFiles(e.target.files); picker.value=''; };
-
   ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
   ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
   drop.addEventListener('drop', e => addFiles(e.dataTransfer.files));
@@ -355,14 +451,11 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
   window.addEventListener('drop', e => e.preventDefault());
   document.addEventListener('paste', e => { if (e.clipboardData?.files?.length) addFiles(e.clipboardData.files); });
 
-  function isImage(f){
-    return (f.type && f.type.startsWith('image/')) || /\.(png|jpe?g|webp|gif|bmp|avif|svg|tiff?|ico)$/i.test(f.name);
-  }
+  const isImage = f => (f.type && f.type.startsWith('image/')) || /\.(png|jpe?g|webp|gif|bmp|avif|svg|tiff?|ico)$/i.test(f.name);
   function addFiles(list){
     const files = [...list].filter(isImage);
     const skipped = list.length - files.length;
     if (!files.length){ if(skipped) toast('ไม่พบไฟล์ภาพที่รองรับ','warn'); return; }
-
     files.forEach(f => {
       const it = { id: ++uid, file:f, url:URL.createObjectURL(f), name:f.name, size:f.size, w:0, h:0, rot:0 };
       items.push(it);
@@ -375,15 +468,15 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
     toast(`เพิ่ม ${files.length} ภาพแล้ว${skipped ? ` (ข้าม ${skipped} ไฟล์)` : ''}`);
   }
 
-  /* ---------- Render ---------- */
+  /* ================= Render ================= */
   function render(){
     const g = $('grid'); g.innerHTML = '';
     $('empty').style.display = items.length ? 'none' : 'block';
-    $('make').disabled = $('preview').disabled = !items.length || busy;
-
+    $('make').disabled = !items.length || busy;
+    $('preview').disabled = fmt !== 'pdf' || !items.length || busy;
     items.forEach((it, i) => {
       const d = document.createElement('div');
-      d.className = 'thumb'; d.draggable = true; d.dataset.i = i;
+      d.className = 'thumb'; d.draggable = true;
       d.innerHTML = `
         <div class="num">${i+1}</div>
         <div class="tools">
@@ -395,8 +488,7 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
           <button class="tbtn" data-a="left" title="เลื่อนซ้าย">◀</button>
           <button class="tbtn" data-a="right" title="เลื่อนขวา">▶</button>
         </div>
-        <div class="meta"><span class="nm" title="${it.name}">${it.name}</span><span data-m="${it.id}">…</span></div>`;
-
+        <div class="meta"><span class="nm" title="${esc(it.name)}">${esc(it.name)}</span><span data-m="${it.id}">…</span></div>`;
       d.querySelectorAll('[data-a]').forEach(b => b.onclick = e => {
         e.stopPropagation();
         const a = b.dataset.a;
@@ -405,7 +497,6 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
         else if (a === 'left' && i > 0) swap(i, i-1);
         else if (a === 'right' && i < items.length-1) swap(i, i+1);
       });
-
       d.addEventListener('dragstart', e => { dragFrom = i; d.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
       d.addEventListener('dragend',   () => { d.classList.remove('dragging'); document.querySelectorAll('.thumb.over').forEach(x=>x.classList.remove('over')); });
       d.addEventListener('dragover',  e => { e.preventDefault(); if(dragFrom!==null && dragFrom!==i) d.classList.add('over'); });
@@ -416,30 +507,23 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
         items.splice(i, 0, items.splice(dragFrom, 1)[0]);
         dragFrom = null; render();
       });
-
-      g.appendChild(d);
-      updateMeta(it);
+      g.appendChild(d); updateMeta(it);
     });
-    updateStats();
+    $('cnt').textContent = items.length;
+    $('pages').textContent = items.length;
+    $('size').textContent = fmtSize(items.reduce((s,i)=>s+i.size,0));
   }
   function updateMeta(it){
     const el = document.querySelector(`[data-m="${it.id}"]`);
     if (el) el.textContent = (it.w ? `${it.w}×${it.h} · ` : '') + fmtSize(it.size);
   }
-  function updateStats(){
-    $('cnt').textContent = items.length;
-    $('pages').textContent = items.length;
-    $('size').textContent = fmtSize(items.reduce((s,i)=>s+i.size,0));
-  }
-  function swap(a,b){ [items[a],items[b]] = [items[b],items[a]]; render(); }
+  const swap = (a,b) => { [items[a],items[b]] = [items[b],items[a]]; render(); };
   function removeItem(id){
     const i = items.findIndex(x=>x.id===id);
     if (i>-1){ URL.revokeObjectURL(items[i].url); items.splice(i,1); render(); }
   }
-
   $('clear').onclick = () => {
-    if (!items.length) return;
-    if (!confirm('ต้องการล้างรูปทั้งหมดใช่ไหม?')) return;
+    if (!items.length || !confirm('ต้องการล้างรูปทั้งหมดใช่ไหม?')) return;
     items.forEach(i=>URL.revokeObjectURL(i.url)); items = []; render(); toast('ล้างรายการแล้ว');
   };
   $('sortName').onclick = () => { items.sort((a,b)=>a.name.localeCompare(b.name,'th',{numeric:true})); render(); toast('เรียงตามชื่อไฟล์แล้ว'); };
@@ -448,56 +532,58 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
   $('helpBtn').onclick  = () => alert(
 `วิธีใช้ photo To file — TooN
 
-1) ลาก/คลิก/กด Ctrl+V เพื่อเพิ่มรูปภาพ (ไม่จำกัดจำนวนและขนาด)
-2) ลากการ์ดเพื่อสลับลำดับหน้า หรือใช้ปุ่ม ◀ ▶
-3) ปุ่ม ↻ หมุนภาพ, ✕ ลบภาพ
-4) ตั้งค่ากระดาษ (ค่าเริ่มต้น A4) → 1 ภาพ ต่อ 1 หน้า พอดีสัดส่วน
-5) กด "สร้าง PDF & ดาวน์โหลด" หรือ Ctrl+Enter
+1) ลาก / คลิก / กด Ctrl+V เพื่อเพิ่มรูปภาพ (ไม่จำกัดจำนวนและขนาด)
+2) เลือกรูปแบบไฟล์: PDF (ค่าเริ่มต้น) / Word / PowerPoint
+3) ลากการ์ดเพื่อสลับลำดับหน้า หรือใช้ปุ่ม ◀ ▶ · ↻ หมุน · ✕ ลบ
+4) ตั้งค่ากระดาษ A4 → 1 ภาพ ต่อ 1 หน้า พอดีสัดส่วน
+5) จำกัดขนาดไฟล์ได้ เช่น "ไม่เกิน 5 MB" ระบบจะบีบอัดให้อัตโนมัติ
+6) ใส่ลายน้ำ / หัว-ท้ายกระดาษ / เลขหน้าได้
 
-ไฟล์ทั้งหมดถูกประมวลผลในเครื่องคุณ ไม่มีการอัปโหลดขึ้นอินเทอร์เน็ต`);
+ตัวแปรที่ใช้ได้ในข้อความ:
+  {n} = เลขหน้า   {total} = จำนวนหน้าทั้งหมด
+  {name} = ชื่อไฟล์ภาพ   {date} = วันที่วันนี้
 
-  /* ---------- PDF Engine ---------- */
+ไฟล์ทั้งหมดประมวลผลในเครื่องคุณ ไม่มีการอัปโหลดขึ้นอินเทอร์เน็ต`);
+
+  /* ================= อ่านค่าตั้งค่า ================= */
   function readOpts(){
+    const maxSel = +$('optMax').value;
     return {
-      size: $('optSize').value,
-      orient: $('optOrient').value,
-      fit: $('optFit').value,
-      margin: +$('optMargin').value,
-      dpi: +$('optDpi').value,
-      fmt: $('optFmt').value,
-      q: +$('optQ').value / 100,
-      bg: $('optBg').value,
-      name: ($('optName').value.trim() || 'photo-to-file').replace(/\.pdf$/i,''),
-      pageNo: $('optPageNo').checked
+      size:$('optSize').value, orient:$('optOrient').value, fit:$('optFit').value,
+      margin:+$('optMargin').value, dpi:+$('optDpi').value, fmtImg:$('optFmt').value,
+      q:+$('optQ').value/100, bg:$('optBg').value,
+      name:($('optName').value.trim() || 'photo-to-file').replace(/\.(pdf|docx|pptx)$/i,''),
+      maxMB: maxSel === -1 ? Math.max(0.05, +$('optMaxMB').value||0) : Math.max(0, maxSel),
+      tries:+$('optTries').value,
+      wmText:$('wmText').value, wmMode:$('wmMode').value, wmColor:$('wmColor').value,
+      wmSize:+$('wmSize').value, wmOp:+$('wmOpacity').value/100, wmRot:+$('wmRot').value,
+      hdText:$('hdText').value, ftText:$('ftText').value, pnFmt:$('pnFmt').value||'{n}',
+      pageNo:$('optPageNo').checked, hfColor:$('hfColor').value, hfSize:+$('hfSize').value
     };
   }
+
+  /* ================= Canvas helpers ================= */
   const loadBitmap = it => ('createImageBitmap' in window)
     ? fetch(it.url).then(r=>r.blob()).then(b=>createImageBitmap(b))
     : new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=it.url; });
 
-  // วาดภาพลง canvas พร้อมหมุน / ครอป / ย่อขนาด
   function prepare(bmp, rot, targetRatio, maxPx){
     const bw = bmp.width, bh = bmp.height;
-    const rw = rot % 180 === 0 ? bw : bh;
-    const rh = rot % 180 === 0 ? bh : bw;
+    const rw = rot % 180 === 0 ? bw : bh, rh = rot % 180 === 0 ? bh : bw;
     let cw = rw, ch = rh;
-    if (targetRatio){                                  // โหมดเต็มหน้า → ครอปกลางภาพ
+    if (targetRatio){
       if (rw/rh > targetRatio){ ch = rh; cw = rh*targetRatio; } else { cw = rw; ch = rw/targetRatio; }
     }
     const scale = maxPx ? Math.min(1, maxPx / Math.max(cw, ch)) : 1;
     const c = document.createElement('canvas');
-    c.width  = Math.max(1, Math.round(cw*scale));
-    c.height = Math.max(1, Math.round(ch*scale));
+    c.width = Math.max(1, Math.round(cw*scale)); c.height = Math.max(1, Math.round(ch*scale));
     const x = c.getContext('2d');
     x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
-    x.translate(c.width/2, c.height/2);
-    x.rotate(rot * Math.PI/180);
-    x.scale(scale, scale);
-    x.drawImage(bmp, -bw/2, -bh/2);
-    x.setTransform(1,0,0,1,0,0);
+    x.translate(c.width/2, c.height/2); x.rotate(rot*Math.PI/180); x.scale(scale, scale);
+    x.drawImage(bmp, -bw/2, -bh/2); x.setTransform(1,0,0,1,0,0);
     return c;
   }
-  function hasAlpha(c){                                  // ตรวจความโปร่งใสแบบย่อส่วน
+  function hasAlpha(c){
     try{
       const s = document.createElement('canvas'); s.width = s.height = 40;
       const sx = s.getContext('2d'); sx.drawImage(c, 0, 0, 40, 40);
@@ -507,95 +593,337 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
     return false;
   }
 
-  async function build(opts){
-    const { jsPDF } = window.jspdf;
-    let pdf = null;
-    const total = items.length;
+  /* ================= Overlay (ลายน้ำ + หัว/ท้าย + เลขหน้า) ================= */
+  function getOverlay(pw, ph, o, n, total, name, want){
+    const today = new Date().toLocaleDateString('th-TH');
+    const rep = s => String(s||'').replace(/\{n\}/g,n).replace(/\{total\}/g,total)
+                        .replace(/\{name\}/g,name||'').replace(/\{date\}/g,today);
+    const hd = want.texts ? rep(o.hdText).trim() : '';
+    const ft = want.texts ? rep(o.ftText).trim() : '';
+    const pn = (want.texts && o.pageNo) ? rep(o.pnFmt).trim() : '';
+    const wm = (want.wm && o.wmMode !== 'none' && o.wmText.trim()) ? o.wmText.trim() : '';
+    if (!hd && !ft && !pn && !wm) return null;
 
+    const key = [Math.round(pw*10),Math.round(ph*10),hd,ft,pn,wm,o.wmMode,o.wmColor,o.wmOp,o.wmSize,o.wmRot,o.hfColor,o.hfSize,o.margin].join('|');
+    if (ovCache.has(key)) return ovCache.get(key);
+
+    const PX = 4;                                   // ~102 DPI
+    const W = Math.max(1,Math.round(pw*PX)), H = Math.max(1,Math.round(ph*PX));
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    const FONT = f => `${f}px 'Noto Sans Thai', Tahoma, Arial, sans-serif`;
+
+    if (wm){
+      const fpx = Math.max(6, o.wmSize * PT2MM * PX);
+      x.save(); x.globalAlpha = o.wmOp; x.fillStyle = o.wmColor;
+      x.font = FONT(fpx); x.textAlign = 'center'; x.textBaseline = 'middle';
+      x.translate(W/2, H/2); x.rotate(o.wmRot*Math.PI/180);
+      if (o.wmMode === 'tile'){
+        const diag = Math.hypot(W,H);
+        const tw = Math.max(fpx*2, x.measureText(wm).width + fpx*1.6), th = fpx*2.8;
+        let drawn = 0;
+        for (let yy=-diag/2; yy<=diag/2 && drawn<500; yy+=th)
+          for (let xx=-diag/2; xx<=diag/2 && drawn<500; xx+=tw){ x.fillText(wm, xx, yy); drawn++; }
+      }else{
+        const maxW = Math.hypot(W,H)*0.92;
+        let w = x.measureText(wm).width;
+        if (w > maxW){ x.font = FONT(fpx*maxW/w); }
+        x.fillText(wm, 0, 0);
+      }
+      x.restore();
+    }
+    if (hd || ft || pn){
+      const fpx = Math.max(6, o.hfSize * PT2MM * PX);
+      const padT = Math.max(4, o.margin*0.45) * PX, padS = Math.max(6, o.margin) * PX;
+      x.globalAlpha = 1; x.fillStyle = o.hfColor; x.font = FONT(fpx);
+      if (hd){ x.textAlign='center'; x.textBaseline='top';    x.fillText(hd, W/2, padT); }
+      if (ft){ x.textAlign='center'; x.textBaseline='bottom'; x.fillText(ft, W/2, H-padT); }
+      if (pn){ x.textAlign='right';  x.textBaseline='bottom'; x.fillText(pn, W-padS, H-padT); }
+    }
+    const res = { data:c.toDataURL('image/png'), alias:'ovl'+ovCache.size, w:pw, h:ph };
+    ovCache.set(key, res); return res;
+  }
+
+  /* ================= เครื่องยนต์กลาง: วนทีละหน้า ================= */
+  async function eachPage(opts, ov, target, cb){
+    const total = items.length, uniform = target !== 'pdf';
+    let fixedPw = 0, fixedPh = 0;
+    if (uniform){
+      let land = opts.orient === 'landscape';
+      if (opts.orient === 'auto'){
+        let n = 0; items.forEach(it => { const l = it.rot%180===0 ? it.w>it.h : it.h>it.w; if (l) n++; });
+        land = n > total/2;
+      }
+      if (opts.size === 'auto' && items[0]){
+        const f = items[0], rw = f.rot%180===0?f.w:f.h, rh = f.rot%180===0?f.h:f.w, r = (rw||1)/(rh||1);
+        if (r >= 1){ fixedPw = 297; fixedPh = 297/r; } else { fixedPh = 297; fixedPw = 297*r; }
+        fixedPw += opts.margin*2; fixedPh += opts.margin*2;
+      } else {
+        const [a,b] = PAPER[opts.size === 'auto' ? 'a4' : opts.size];
+        fixedPw = land ? b : a; fixedPh = land ? a : b;
+      }
+    }
+    let made = 0;
     for (let i=0;i<total;i++){
       const it = items[i];
-      $('pFill').style.width = Math.round(i/total*100) + '%';
-      $('pText').textContent = `กำลังประมวลผลภาพ ${i+1} / ${total} — ${it.name}`;
-      await new Promise(r => setTimeout(r, 0));
-
+      cb.prog && cb.prog(i,total,it.name);
+      await sleep(0);
       let bmp;
       try { bmp = await loadBitmap(it); }
       catch(e){ toast(`ข้ามไฟล์ "${it.name}" (อ่านไม่ได้)`, 'warn'); continue; }
 
-      const rw = it.rot % 180 === 0 ? bmp.width  : bmp.height;
-      const rh = it.rot % 180 === 0 ? bmp.height : bmp.width;
-      const landscape = rw > rh;
-
-      // ---- กำหนดขนาดหน้ากระดาษ ----
-      let pw, ph, fmtPage;
-      if (opts.size === 'auto'){
-        const long = 297, r = rw/rh;
-        if (r >= 1){ pw = long; ph = long/r; } else { ph = long; pw = long*r; }
+      const rw = it.rot%180===0 ? bmp.width : bmp.height, rh = it.rot%180===0 ? bmp.height : bmp.width;
+      let pw, ph;
+      if (uniform){ pw = fixedPw; ph = fixedPh; }
+      else if (opts.size === 'auto'){
+        const r = rw/rh;
+        if (r >= 1){ pw = 297; ph = 297/r; } else { ph = 297; pw = 297*r; }
         pw += opts.margin*2; ph += opts.margin*2;
-        fmtPage = [pw, ph];
       } else {
         const [a,b] = PAPER[opts.size];
-        const land = opts.orient === 'landscape' || (opts.orient === 'auto' && landscape);
+        const land = opts.orient === 'landscape' || (opts.orient === 'auto' && rw > rh);
         pw = land ? b : a; ph = land ? a : b;
-        fmtPage = [pw, ph];
       }
-
-      if (!pdf) pdf = new jsPDF({ unit:'mm', format:fmtPage, orientation: pw>ph?'landscape':'portrait', compress:true });
-      else      pdf.addPage(fmtPage, pw>ph?'landscape':'portrait');
-
-      // พื้นหลังหน้ากระดาษ
-      if (opts.bg.toLowerCase() !== '#ffffff'){ pdf.setFillColor(opts.bg); pdf.rect(0,0,pw,ph,'F'); }
-
-      const availW = Math.max(1, pw - opts.margin*2);
-      const availH = Math.max(1, ph - opts.margin*2);
-      const fill   = opts.fit === 'fill' && opts.size !== 'auto';
-      const maxPx  = opts.dpi ? Math.round(Math.max(availW, availH)/25.4*opts.dpi) : 0;
+      const availW = Math.max(1, pw - opts.margin*2), availH = Math.max(1, ph - opts.margin*2);
+      const fill = opts.fit === 'fill' && opts.size !== 'auto';
+      const sc = ov.scale || 1;
+      const maxPx = opts.dpi ? Math.round(Math.max(availW,availH)/25.4*opts.dpi*sc)
+                             : (sc < 1 ? Math.round(Math.max(rw,rh)*sc) : 0);
 
       const canvas = prepare(bmp, it.rot, fill ? availW/availH : null, maxPx);
       if (bmp.close) bmp.close();
 
-      // เลือกฟอร์แมตภาพ
-      let usePng = opts.fmt === 'png' || (opts.fmt === 'auto' && hasAlpha(canvas));
-      if (!usePng){                                      // เติมพื้นหลังใต้ภาพก่อนแปลงเป็น JPEG
+      let usePng = !ov.forceJpeg && (opts.fmtImg === 'png' || (opts.fmtImg === 'auto' && hasAlpha(canvas)));
+      if (!usePng){
         const cx = canvas.getContext('2d');
         cx.globalCompositeOperation = 'destination-over';
         cx.fillStyle = opts.bg; cx.fillRect(0,0,canvas.width,canvas.height);
         cx.globalCompositeOperation = 'source-over';
       }
-      const data = usePng ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', opts.q);
+      const data = usePng ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', ov.quality ?? opts.q);
 
-      // ---- วางภาพกลางหน้า ----
       let dw, dh;
       if (fill){ dw = availW; dh = availH; }
-      else {
-        const r = canvas.width / canvas.height;
-        dw = Math.min(availW, availH*r); dh = dw/r;
-      }
-      pdf.addImage(data, usePng?'PNG':'JPEG', (pw-dw)/2, (ph-dh)/2, dw, dh, undefined, 'FAST');
+      else { const r = canvas.width/canvas.height; dw = Math.min(availW, availH*r); dh = dw/r; }
 
-      if (opts.pageNo){
-        pdf.setFontSize(9); pdf.setTextColor(130,130,130);
-        pdf.text(String(i+1), pw/2, ph - 4.5, { align:'center' });
+      const overlay = getOverlay(pw, ph, opts, i+1, total, it.name,
+        { wm: target !== 'docx', texts: target !== 'docx' });
+
+      await cb({ index:i, total, item:it, pw, ph, availW, availH, dw, dh,
+                 x:(pw-dw)/2, y:(ph-dh)/2, data, ext: usePng?'png':'jpeg', overlay });
+      canvas.width = canvas.height = 0; made++;
+    }
+    if (!made) throw new Error('ไม่มีภาพที่ประมวลผลได้');
+    return { uniform, pw:fixedPw, ph:fixedPh };
+  }
+
+  /* ================= PDF ================= */
+  async function buildPdf(opts, ov){
+    const { jsPDF } = window.jspdf;
+    let pdf = null;
+    const prog = (i,t,nm) => setProg(i/t*100, `กำลังประมวลผลภาพ ${i+1} / ${t} — ${nm}`);
+    const cb = async p => {
+      const land = p.pw > p.ph;
+      if (!pdf) pdf = new jsPDF({ unit:'mm', format:[p.pw,p.ph], orientation: land?'landscape':'portrait', compress:true });
+      else pdf.addPage([p.pw,p.ph], land?'landscape':'portrait');
+      if (opts.bg.toLowerCase() !== '#ffffff'){ pdf.setFillColor(opts.bg); pdf.rect(0,0,p.pw,p.ph,'F'); }
+      pdf.addImage(p.data, p.ext==='png'?'PNG':'JPEG', p.x, p.y, p.dw, p.dh, undefined, 'FAST');
+      if (p.overlay) pdf.addImage(p.overlay.data, 'PNG', 0, 0, p.pw, p.ph, p.overlay.alias, 'FAST');
+    };
+    cb.prog = prog;
+    await eachPage(opts, ov, 'pdf', cb);
+    pdf.setProperties({ title:opts.name, subject:'Images to PDF', author:'PIYAPAT B.', creator:'photo To file — TooN' });
+    return pdf.output('blob');
+  }
+
+  /* ================= Word (.docx) ================= */
+  const RPR = o => `<w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Tahoma"/><w:color w:val="${hex6(o.hfColor)}"/>`+
+                   `<w:sz w:val="${Math.round(o.hfSize*2)}"/><w:szCs w:val="${Math.round(o.hfSize*2)}"/></w:rPr>`;
+  const fldRun = (code,rpr) =>
+    `<w:r>${rpr}<w:fldChar w:fldCharType="begin"/></w:r><w:r>${rpr}<w:instrText xml:space="preserve"> ${code} </w:instrText></w:r>`+
+    `<w:r>${rpr}<w:fldChar w:fldCharType="separate"/></w:r><w:r>${rpr}<w:t>1</w:t></w:r><w:r>${rpr}<w:fldChar w:fldCharType="end"/></w:r>`;
+  function runsOf(tpl, rpr){
+    const today = new Date().toLocaleDateString('th-TH');
+    const t = String(tpl||'').replace(/\{date\}/g, today).replace(/\{name\}/g,'');
+    if (!t) return '';
+    return t.split(/(\{n\}|\{total\})/g).filter(Boolean).map(p =>
+      p === '{n}' ? fldRun('PAGE', rpr) : p === '{total}' ? fldRun('NUMPAGES', rpr)
+      : `<w:r>${rpr}<w:t xml:space="preserve">${esc(p)}</w:t></w:r>`).join('');
+  }
+  const picXml = (rid, cx, cy, id, name) =>
+   `<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">`+
+   `<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">`+
+   `<pic:nvPicPr><pic:cNvPr id="${id}" name="${esc(name)}"/><pic:cNvPicPr/></pic:nvPicPr>`+
+   `<pic:blipFill><a:blip r:embed="${rid}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>`+
+   `<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm>`+
+   `<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic>`;
+
+  async function buildDocx(opts, ov){
+    await loadScript(LIBS.jszip);
+    const zip = new JSZip();
+    const rels = [], body = [];
+    let idx = 0, pageW = 0, pageH = 0;
+    const prog = (i,t,nm) => setProg(i/t*100, `กำลังสร้างหน้า Word ${i+1} / ${t} — ${nm}`);
+    const cb = async p => {
+      idx++; pageW = p.pw; pageH = p.ph;
+      const fn = `image${idx}.${p.ext}`, rid = `rIdImg${idx}`;
+      zip.file('word/media/'+fn, p.data.split(',')[1], { base64:true });
+      rels.push(`<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${fn}"/>`);
+      const k = Math.min(1, (p.availH-0.4)/p.dh, (p.availW-0.4)/p.dw);
+      const cx = Math.round(p.dw*k*MM2EMU), cy = Math.round(p.dh*k*MM2EMU);
+      const brk = p.index < p.total-1 ? '<w:r><w:br w:type="page"/></w:r>' : '';
+      body.push(`<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/></w:pPr>`+
+        `<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/>`+
+        `<wp:effectExtent l="0" t="0" r="0" b="0"/><wp:docPr id="${idx}" name="${esc(p.item.name)}"/>`+
+        `<wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr>`+
+        picXml(rid, cx, cy, idx, p.item.name)+`</wp:inline></w:drawing></w:r>${brk}</w:p>`);
+    };
+    cb.prog = prog;
+    await eachPage(opts, ov, 'docx', cb);
+    setProg(92, 'กำลังประกอบไฟล์ Word…');
+
+    /* ลายน้ำ = ภาพลอยเต็มหน้าใน header */
+    const wmImg = getOverlay(pageW, pageH, opts, 1, idx, '', { wm:true, texts:false });
+    const rpr = RPR(opts);
+    const hdRuns = runsOf(opts.hdText, rpr);
+    const ftRuns = runsOf(opts.ftText, rpr);
+    const pnRuns = opts.pageNo ? runsOf(opts.pnFmt, rpr) : '';
+    const useHdr = !!(wmImg || hdRuns), useFtr = !!(ftRuns || pnRuns);
+
+    const marginTw = Math.round(opts.margin*MM2TW);
+    const needEdge = (useHdr || useFtr) ? Math.round(12*MM2TW) : 0;
+    const topTw = Math.max(marginTw, needEdge), botTw = Math.max(marginTw, needEdge);
+    const sideTw = marginTw;
+    const contentTw = Math.round(pageW*MM2TW) - sideTw*2;
+
+    let hdrXml = '', ftrXml = '', hdrRels = '';
+    if (useHdr){
+      let inner = '';
+      if (wmImg){
+        zip.file('word/media/watermark.png', wmImg.data.split(',')[1], { base64:true });
+        hdrRels = `<Relationship Id="rIdWm" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/watermark.png"/>`;
+        const cx = Math.round(pageW*MM2EMU), cy = Math.round(pageH*MM2EMU);
+        inner += `<w:p><w:pPr><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:rPr><w:sz w:val="2"/></w:rPr></w:pPr><w:r><w:drawing>`+
+          `<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251658240" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">`+
+          `<wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:align>center</wp:align></wp:positionH>`+
+          `<wp:positionV relativeFrom="page"><wp:align>center</wp:align></wp:positionV>`+
+          `<wp:extent cx="${cx}" cy="${cy}"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/>`+
+          `<wp:docPr id="9001" name="Watermark"/><wp:cNvGraphicFramePr/>`+
+          picXml('rIdWm', cx, cy, 9001, 'watermark.png')+`</wp:anchor></w:drawing></w:r></w:p>`;
       }
-      canvas.width = canvas.height = 0;                  // คืนหน่วยความจำ
+      if (hdRuns) inner += `<w:p><w:pPr><w:spacing w:after="0"/><w:jc w:val="center"/></w:pPr>${hdRuns}</w:p>`;
+      if (!inner) inner = '<w:p/>';
+      hdrXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:hdr ${NS}>${inner}</w:hdr>`;
+    }
+    if (useFtr){
+      const tabs = `<w:tabs><w:tab w:val="center" w:pos="${Math.round(contentTw/2)}"/><w:tab w:val="right" w:pos="${contentTw}"/></w:tabs>`;
+      const line = `<w:p><w:pPr>${tabs}<w:spacing w:after="0"/></w:pPr>`+
+        (ftRuns ? `<w:r>${rpr}<w:tab/></w:r>${ftRuns}` : '')+
+        (pnRuns ? `<w:r>${rpr}<w:tab/></w:r>${pnRuns}` : '')+`</w:p>`;
+      ftrXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr ${NS}>${line}</w:ftr>`;
     }
 
-    if (!pdf) throw new Error('ไม่มีภาพที่ประมวลผลได้');
-    pdf.setProperties({ title: opts.name, subject:'Images to PDF', author:'PIYAPAT B.', creator:'photo To file — TooN' });
-    $('pFill').style.width = '100%';
-    return pdf;
+    const sectPr = `<w:sectPr>`+
+      (useHdr?`<w:headerReference w:type="default" r:id="rIdHdr"/>`:'')+
+      (useFtr?`<w:footerReference w:type="default" r:id="rIdFtr"/>`:'')+
+      `<w:pgSz w:w="${Math.round(pageW*MM2TW)}" w:h="${Math.round(pageH*MM2TW)}" w:orient="${pageW>pageH?'landscape':'portrait'}"/>`+
+      `<w:pgMar w:top="${topTw}" w:right="${sideTw}" w:bottom="${botTw}" w:left="${sideTw}" w:header="${Math.round(6*MM2TW)}" w:footer="${Math.round(6*MM2TW)}" w:gutter="0"/>`+
+      `<w:vAlign w:val="center"/><w:cols w:space="708"/><w:docGrid w:linePitch="360"/></w:sectPr>`;
+
+    zip.file('word/document.xml',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${NS}><w:body>${body.join('')}${sectPr}</w:body></w:document>`);
+    if (useHdr){ zip.file('word/header1.xml', hdrXml); rels.push(`<Relationship Id="rIdHdr" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/>`); }
+    if (useFtr){ zip.file('word/footer1.xml', ftrXml); rels.push(`<Relationship Id="rIdFtr" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>`); }
+    if (hdrRels) zip.file('word/_rels/header1.xml.rels',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${hdrRels}</Relationships>`);
+    zip.file('word/_rels/document.xml.rels',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${rels.join('')}</Relationships>`);
+    zip.file('_rels/.rels',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">`+
+      `<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>`+
+      `<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/></Relationships>`);
+    zip.file('docProps/core.xml',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" `+
+      `xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>${esc(opts.name)}</dc:title><dc:creator>PIYAPAT B.</dc:creator>`+
+      `<cp:lastModifiedBy>photo To file - TooN</cp:lastModifiedBy></cp:coreProperties>`);
+    zip.file('[Content_Types].xml',
+      `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">`+
+      `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>`+
+      `<Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>`+
+      `<Default Extension="jpeg" ContentType="image/jpeg"/>`+
+      `<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>`+
+      (useHdr?`<Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/>`:'')+
+      (useFtr?`<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>`:'')+
+      `<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/></Types>`);
+
+    return zip.generateAsync({ type:'blob', compression:'DEFLATE',
+      mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  }
+  const NS = `xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" `+
+             `xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" `+
+             `xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" `+
+             `xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" `+
+             `xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"`;
+
+  /* ================= PowerPoint (.pptx) ================= */
+  async function buildPptx(opts, ov){
+    await loadScript(LIBS.pptx);
+    const pptx = new PptxGenJS();
+    pptx.author = 'PIYAPAT B.'; pptx.company = 'photo To file — TooN'; pptx.title = opts.name;
+    let defined = false;
+    const prog = (i,t,nm) => setProg(i/t*100, `กำลังสร้างสไลด์ ${i+1} / ${t} — ${nm}`);
+    const cb = async p => {
+      if (!defined){
+        pptx.defineLayout({ name:'TOON', width:+(p.pw*MM2IN).toFixed(3), height:+(p.ph*MM2IN).toFixed(3) });
+        pptx.layout = 'TOON'; defined = true;
+      }
+      const s = pptx.addSlide();
+      s.background = { color: hex6(opts.bg) };
+      s.addImage({ data:p.data, x:p.x*MM2IN, y:p.y*MM2IN, w:p.dw*MM2IN, h:p.dh*MM2IN });
+      if (p.overlay) s.addImage({ data:p.overlay.data, x:0, y:0, w:p.pw*MM2IN, h:p.ph*MM2IN });
+    };
+    cb.prog = prog;
+    await eachPage(opts, ov, 'pptx', cb);
+    setProg(94, 'กำลังประกอบไฟล์ PowerPoint…');
+    try { return await pptx.write({ outputType:'blob' }); }
+    catch(e){ return await pptx.write('blob'); }
+  }
+
+  /* ================= ตัวจัดการสร้างไฟล์ + บีบอัด ================= */
+  const BUILD = { pdf:buildPdf, docx:buildDocx, pptx:buildPptx };
+
+  async function buildWithLimit(target, opts){
+    const limit = opts.maxMB > 0 ? opts.maxMB*1024*1024 : 0;
+    if (!limit) return { blob: await BUILD[target](opts, { scale:1, quality:opts.q, forceJpeg:false }), tries:1, hit:true };
+
+    let scale = 1, q = Math.min(opts.q, 0.92), best = null, hit = false, a = 0;
+    for (; a < opts.tries; a++){
+      $('pTitle').textContent = `กำลังบีบอัด… รอบที่ ${a+1} / ${opts.tries}`;
+      const blob = await BUILD[target](opts, { scale, quality:q, forceJpeg:true });
+      if (!best || blob.size < best.size) best = blob;
+      if (blob.size <= limit){ best = blob; hit = true; break; }
+      const ratio = limit / blob.size;
+      if (q > 0.55 && ratio > 0.55) q = Math.max(0.5, q*0.8);
+      else { scale = Math.max(0.10, scale*Math.sqrt(ratio)*0.94); q = Math.max(0.40, q*0.92); }
+      setProg(100, `ไฟล์ยังใหญ่ไป (${fmtSize(blob.size)}) — ลดคุณภาพแล้วลองใหม่…`);
+      await sleep(120);
+    }
+    return { blob:best, tries:a+1, hit };
   }
 
   async function run(mode){
     if (busy || !items.length) return;
     busy = true; $('make').disabled = $('preview').disabled = true;
+    ovCache.clear();
     $('overlay').classList.add('show');
-    $('pTitle').textContent = mode === 'preview' ? 'กำลังสร้างตัวอย่าง…' : 'กำลังสร้างไฟล์ PDF…';
-    $('pFill').style.width = '0%';
+    $('pTitle').textContent = mode === 'preview' ? 'กำลังสร้างตัวอย่าง…' : `กำลังสร้างไฟล์ ${LABEL[fmt]}…`;
+    setProg(0, 'เตรียมข้อมูล…');
+    const target = mode === 'preview' ? 'pdf' : fmt;
     const opts = readOpts();
     try{
-      const pdf = await build(opts);
-      const blob = pdf.output('blob');
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const { blob, tries, hit } = await buildWithLimit(target, opts);
+      setProg(100, 'เสร็จแล้ว');
       if (mode === 'preview'){
         const u = URL.createObjectURL(blob);
         window.open(u, '_blank');
@@ -603,17 +931,20 @@ footer .copy{font-size:.8rem;color:var(--muted);margin-top:3px}
         toast('เปิดตัวอย่างในแท็บใหม่แล้ว');
       } else {
         const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob); a.download = opts.name + '.pdf';
+        a.href = URL.createObjectURL(blob); a.download = opts.name + '.' + EXT[target];
         document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
-        toast(`สร้าง PDF สำเร็จ · ${items.length} หน้า · ${fmtSize(blob.size)}`, 'ok');
+        setTimeout(()=>URL.revokeObjectURL(a.href), 8000);
+        toast(`สร้าง ${LABEL[target]} สำเร็จ · ${items.length} หน้า · ${fmtSize(blob.size)}${tries>1?` · บีบอัด ${tries} รอบ`:''}`, 'ok');
+        if (opts.maxMB > 0 && !hit)
+          toast(`บีบอัดได้เล็กสุด ${fmtSize(blob.size)} (เป้าหมาย ${opts.maxMB} MB) — ลองเพิ่มจำนวนรอบ หรือลด DPI`, 'warn');
       }
     }catch(err){
       console.error(err);
       toast('เกิดข้อผิดพลาด: ' + err.message + ' (ลองลด DPI หรือแบ่งเป็นหลายชุด)', 'err');
     }finally{
       busy = false; $('overlay').classList.remove('show');
-      $('make').disabled = $('preview').disabled = !items.length;
+      $('make').disabled = !items.length;
+      $('preview').disabled = fmt !== 'pdf' || !items.length;
     }
   }
   $('make').onclick = () => run('download');
